@@ -89,7 +89,7 @@ class ContactSection extends StatelessWidget {
     );
   }
 
-  Widget _buildSocialIcon(IconData icon, String url, String tooltip) {
+  Widget _buildSocialIcon(FaIconData icon, String url, String tooltip) {
     return IconButton(
       onPressed: () => _launchUrl(url),
       icon: FaIcon(icon),

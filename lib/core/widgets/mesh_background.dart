@@ -11,7 +11,7 @@ class MeshBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    
+
     return Stack(
       children: [
         Container(color: AppColors.background),
@@ -19,19 +19,28 @@ class MeshBackground extends StatelessWidget {
         Positioned(
           top: -size.height * 0.2,
           right: -size.width * 0.1,
-          child: _GlowCircle(color: AppColors.primary.withOpacity(0.1), size: size.width * 0.5),
+          child: _GlowCircle(
+            color: AppColors.primary.withOpacity(0.1),
+            size: size.width * 0.5,
+          ),
         ),
         // Center Left Glow
         Positioned(
           top: size.height * 0.3,
           left: -size.width * 0.2,
-          child: _GlowCircle(color: AppColors.secondary.withOpacity(0.08), size: size.width * 0.6),
+          child: _GlowCircle(
+            color: AppColors.secondary.withOpacity(0.08),
+            size: size.width * 0.6,
+          ),
         ),
         // Bottom Right Glow
         Positioned(
           bottom: -size.height * 0.1,
           right: -size.width * 0.05,
-          child: _GlowCircle(color: AppColors.accent.withOpacity(0.05), size: size.width * 0.4),
+          child: _GlowCircle(
+            color: AppColors.accent.withOpacity(0.05),
+            size: size.width * 0.4,
+          ),
         ),
         // Floating Keywords
         ..._buildFloatingKeywords(size),
@@ -54,40 +63,40 @@ class MeshBackground extends StatelessWidget {
     return keywordData.asMap().entries.map((entry) {
       final index = entry.key;
       final data = entry.value;
-      
+
       // Use index as seed for consistent random positions
-      final random = math.Random(index + 42); 
+      final random = math.Random(index + 42);
       final top = random.nextDouble() * (size.height - 200) + 100;
       final left = random.nextDouble() * (size.width - 200) + 100;
-      
+
       return Positioned(
         top: top,
         left: left,
-        child: Opacity(
-          opacity: 0.08,
-          child: _KeywordBubble(
-            icon: data['icon'] as IconData,
-          ),
-        ).animate(onPlay: (c) => c.repeat(reverse: true))
-         .moveY(
-           begin: 0, 
-           end: random.nextBool() ? 40 : -40, 
-           duration: (5 + random.nextInt(5)).seconds, 
-           curve: Curves.easeInOut
-         )
-         .rotate(
-           begin: -0.1, 
-           end: 0.1, 
-           duration: (7 + random.nextInt(5)).seconds, 
-           curve: Curves.easeInOut
-         ),
+        child:
+            Opacity(
+                  opacity: 0.08,
+                  child: _KeywordBubble(icon: data['icon'] as FaIconData),
+                )
+                .animate(onPlay: (c) => c.repeat(reverse: true))
+                .moveY(
+                  begin: 0,
+                  end: random.nextBool() ? 40 : -40,
+                  duration: (5 + random.nextInt(5)).seconds,
+                  curve: Curves.easeInOut,
+                )
+                .rotate(
+                  begin: -0.1,
+                  end: 0.1,
+                  duration: (7 + random.nextInt(5)).seconds,
+                  curve: Curves.easeInOut,
+                ),
       );
     }).toList();
   }
 }
 
 class _KeywordBubble extends StatelessWidget {
-  final IconData icon;
+  final FaIconData icon;
 
   const _KeywordBubble({required this.icon});
 
@@ -99,10 +108,7 @@ class _KeywordBubble extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         gradient: RadialGradient(
-          colors: [
-            AppColors.textPrimary.withOpacity(0.2),
-            Colors.transparent,
-          ],
+          colors: [AppColors.textPrimary.withOpacity(0.2), Colors.transparent],
         ),
         border: Border.all(
           color: AppColors.textPrimary.withOpacity(0.5),
@@ -113,11 +119,7 @@ class _KeywordBubble extends StatelessWidget {
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
           child: Center(
-            child: FaIcon(
-              icon,
-              size: 50,
-              color: AppColors.textPrimary,
-            ),
+            child: FaIcon(icon, size: 50, color: AppColors.textPrimary),
           ),
         ),
       ),
