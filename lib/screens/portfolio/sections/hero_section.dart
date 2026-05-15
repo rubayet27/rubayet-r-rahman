@@ -39,73 +39,108 @@ class HeroSection extends StatelessWidget {
 
     final textContent = Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: isDesktop || isTablet ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+      crossAxisAlignment: isDesktop || isTablet
+          ? CrossAxisAlignment.start
+          : CrossAxisAlignment.center,
       children: [
-        Text(
-          "Hi, I'm",
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: AppColors.secondary,
-              ),
-        ).animate().fadeIn(duration: 500.ms).slideY(begin: 0.2, end: 0),
+        // Text(
+        //   "Hi, I'm",
+        //   style: Theme.of(context).textTheme.titleLarge?.copyWith(
+        //         color: AppColors.secondary,
+        //       ),
+        // ).animate().fadeIn(duration: 500.ms).slideY(begin: 0.2, end: 0),
         const SizedBox(height: 16),
         Text(
-          data.name,
-          textAlign: isDesktop || isTablet ? TextAlign.start : TextAlign.center,
-          style: (isDesktop
-                  ? Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 72, fontWeight: FontWeight.bold)
-                  : Theme.of(context).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.bold))
-              ?.copyWith(height: 1.1),
-        ).animate().fadeIn(duration: 500.ms, delay: 200.ms).slideY(begin: 0.2, end: 0),
+              data.name,
+              textAlign: isDesktop || isTablet
+                  ? TextAlign.start
+                  : TextAlign.center,
+              style:
+                  (isDesktop
+                          ? Theme.of(context).textTheme.displayLarge?.copyWith(
+                              fontSize: 72,
+                              fontWeight: FontWeight.bold,
+                            )
+                          : Theme.of(context).textTheme.displayMedium?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ))
+                      ?.copyWith(height: 1.1),
+            )
+            .animate()
+            .fadeIn(duration: 500.ms, delay: 200.ms)
+            .slideY(begin: 0.2, end: 0),
         const SizedBox(height: 8),
         Text(
-          data.headline,
-          textAlign: isDesktop || isTablet ? TextAlign.start : TextAlign.center,
-          style: (isDesktop
-                  ? Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 72, fontWeight: FontWeight.bold)
-                  : Theme.of(context).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.bold))
-              ?.copyWith(
-            height: 1.1,
-            foreground: Paint()
-              ..shader = AppColors.primaryGradient.createShader(
-                const Rect.fromLTWH(0.0, 0.0, 500.0, 100.0),
-              ),
-          ),
-        ).animate().fadeIn(duration: 500.ms, delay: 400.ms).slideY(begin: 0.2, end: 0),
+              data.headline,
+              textAlign: isDesktop || isTablet
+                  ? TextAlign.start
+                  : TextAlign.center,
+              style:
+                  (isDesktop
+                          ? Theme.of(context).textTheme.displayLarge?.copyWith(
+                              fontSize: 72,
+                              fontWeight: FontWeight.bold,
+                            )
+                          : Theme.of(context).textTheme.displayMedium?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ))
+                      ?.copyWith(
+                        height: 1.1,
+                        foreground: Paint()
+                          ..shader = AppColors.primaryGradient.createShader(
+                            const Rect.fromLTWH(0.0, 0.0, 500.0, 100.0),
+                          ),
+                      ),
+            )
+            .animate()
+            .fadeIn(duration: 500.ms, delay: 400.ms)
+            .slideY(begin: 0.2, end: 0),
         const SizedBox(height: 32),
         SizedBox(
           width: isDesktop ? 600 : double.infinity,
-          child: Text(
-            data.shortBio,
-            textAlign: isDesktop || isTablet ? TextAlign.start : TextAlign.center,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  height: 1.6,
-                  color: AppColors.textSecondary,
-                  fontSize: 18,
-                ),
-          ).animate().fadeIn(duration: 500.ms, delay: 600.ms).slideY(begin: 0.2, end: 0),
+          child:
+              Text(
+                    data.shortBio,
+                    textAlign: isDesktop || isTablet
+                        ? TextAlign.start
+                        : TextAlign.center,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      height: 1.6,
+                      color: AppColors.textSecondary,
+                      fontSize: 18,
+                    ),
+                  )
+                  .animate()
+                  .fadeIn(duration: 500.ms, delay: 600.ms)
+                  .slideY(begin: 0.2, end: 0),
         ),
         const SizedBox(height: 48),
         Wrap(
-          spacing: 20,
-          runSpacing: 16,
-          alignment: isDesktop || isTablet ? WrapAlignment.start : WrapAlignment.center,
-          children: [
-            HoverButton(
-              text: "View Projects",
-              onPressed: () => _scrollTo(projectsKey),
-            ),
-            HoverButton(
-              text: "Contact Me",
-              isPrimary: false,
-              onPressed: () => _scrollTo(contactKey),
-            ),
-            HoverButton(
-              text: "Download CV",
-              isPrimary: false,
-              onPressed: () => _launchUrl('assets/cv/rubayetrrahman.pdf'),
-            ),
-          ],
-        ).animate().fadeIn(duration: 500.ms, delay: 800.ms).slideY(begin: 0.2, end: 0),
+              spacing: 20,
+              runSpacing: 16,
+              alignment: isDesktop || isTablet
+                  ? WrapAlignment.start
+                  : WrapAlignment.center,
+              children: [
+                HoverButton(
+                  text: "View Projects",
+                  onPressed: () => _scrollTo(projectsKey),
+                ),
+                HoverButton(
+                  text: "Contact Me",
+                  isPrimary: false,
+                  onPressed: () => _scrollTo(contactKey),
+                ),
+                HoverButton(
+                  text: "Download CV",
+                  isPrimary: false,
+                  onPressed: () => _launchUrl('cv/rubayetrrahman.pdf'),
+                ),
+              ],
+            )
+            .animate()
+            .fadeIn(duration: 500.ms, delay: 800.ms)
+            .slideY(begin: 0.2, end: 0),
         if (isDesktop) ...[
           const SizedBox(height: 100),
           _buildScrollIndicator(),
@@ -148,21 +183,30 @@ class HeroSection extends StatelessWidget {
           height: 50,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: AppColors.textSecondary.withOpacity(0.3), width: 2),
+            border: Border.all(
+              color: AppColors.textSecondary.withOpacity(0.3),
+              width: 2,
+            ),
           ),
           child: Column(
             children: [
               const SizedBox(height: 8),
               Container(
-                width: 6,
-                height: 10,
-                decoration: const BoxDecoration(
-                  color: AppColors.primary,
-                  shape: BoxShape.circle,
-                ),
-              ).animate(onPlay: (c) => c.repeat())
-                .moveY(begin: 0, end: 15, duration: 1.5.seconds, curve: Curves.easeInOut)
-                .fadeOut(duration: 1.5.seconds),
+                    width: 6,
+                    height: 10,
+                    decoration: const BoxDecoration(
+                      color: AppColors.primary,
+                      shape: BoxShape.circle,
+                    ),
+                  )
+                  .animate(onPlay: (c) => c.repeat())
+                  .moveY(
+                    begin: 0,
+                    end: 15,
+                    duration: 1.5.seconds,
+                    curve: Curves.easeInOut,
+                  )
+                  .fadeOut(duration: 1.5.seconds),
             ],
           ),
         ),
@@ -184,33 +228,36 @@ class HeroSection extends StatelessWidget {
     final size = isDesktop ? 420.0 : 280.0;
 
     return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(
-          color: AppColors.primary.withOpacity(0.5),
-          width: 4,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.primary.withOpacity(0.2),
-            blurRadius: 60,
-            spreadRadius: 10,
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: AppColors.primary.withOpacity(0.5),
+              width: 4,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.primary.withOpacity(0.2),
+                blurRadius: 60,
+                spreadRadius: 10,
+              ),
+              BoxShadow(
+                color: AppColors.secondary.withOpacity(0.2),
+                blurRadius: 40,
+                spreadRadius: 5,
+                offset: const Offset(10, 10),
+              ),
+            ],
+            image: const DecorationImage(
+              image: AssetImage('assets/rubayetdp.jpeg'),
+              fit: BoxFit.cover,
+            ),
           ),
-          BoxShadow(
-            color: AppColors.secondary.withOpacity(0.2),
-            blurRadius: 40,
-            spreadRadius: 5,
-            offset: const Offset(10, 10),
-          ),
-        ],
-        image: const DecorationImage(
-          image: AssetImage('assets/rubayetdp.jpeg'),
-          fit: BoxFit.cover,
-        ),
-      ),
-    ).animate().fadeIn(duration: 800.ms, delay: 400.ms).scale(
+        )
+        .animate()
+        .fadeIn(duration: 800.ms, delay: 400.ms)
+        .scale(
           begin: const Offset(0.8, 0.8),
           end: const Offset(1.0, 1.0),
           curve: Curves.easeOutBack,

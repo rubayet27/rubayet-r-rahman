@@ -7,9 +7,9 @@ class AppColors {
   static const Color surfaceLight = Color(0xFF1E293B);
 
   // Accents (Premium aesthetic)
-  static const Color primary = Color(0xFF38BDF8); // Bright sky blue
-  static const Color secondary = Color(0xFF6366F1); // Indigo
-  static const Color accent = Color(0xFFF472B6); // Pink
+  static const Color primary = Color(0xFF7e4aa0); // Bright sky blue
+  static const Color secondary = Color(0xFF4a2966); // Indigo
+  static const Color accent = Color(0xFFc880e4); // Pink
 
   // Text Colors
   static const Color textPrimary = Color(0xFFF8FAFC);
